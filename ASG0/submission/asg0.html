@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Clear "canvas"</title>
+  </head>
+ 
+  <body onload="main()">
+    <canvas id="web" width="400" height="400">
+    Please use a browser that supports "canvas"
+    </canvas>
+
+    <script src="../lib/cuon-matrix-cse160.js"></script>
+    <script src="asg0.js"></script>
+    
+    <!-- got the step part on stack overflow -->
+    <br/>v1: x <input id = 'xinput' type = 'number' step = 'any'/>
+    y <input id = 'yinput' type = 'number' step = 'any'/>
+
+    <br/>v2: x <input id = 'x2input' type = 'number' step = 'any'/>
+    y <input id = 'y2input' type = 'number' step = 'any'/>
+    <br/> <button onclick="handleDrawEvent()">Draw</button>
+
+    <br/> Operation: <select name = 'operation' id="Operation"> 
+        <option value = 'add'> Add </option>
+        <option value = 'sub'> Subtract </option>
+        <option value = 'div'> Divison </option>
+        <option value = 'mul'> Multiply </option>
+        <option value = 'magnitude'> Magnitude</option>
+        <option value = 'normalize'> Normalize </option>
+        <option value = 'angle between'> Angle Between </option>
+        <option value = 'area'> Area </option>
+    </select>
+    Scalar: <input id = 'scalar' type = 'number' step = 'any'/>
+    <br/> <button onclick="handleDrawOperationEvent()">Draw</button>
+
+
+  </body>
+</html>
