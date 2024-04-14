@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Change a point color</title>
+  </head>
+
+  <body onload="main()">
+    <canvas id="webgl" width="400" height="400">
+    Please use a browser that supports "canvas"
+    </canvas>
+
+    <p id="numdot">XXX</p>
+
+    <!--Buttons-->
+    <button type = "button" id = "green">Green</button>
+    <button type = "button" id = "red">Red</button>
+    <button type = "button" id = "clearButton">Clear</button>
+    <p>
+    <button type = "button" id = "pointButton">Point</button>
+    <button type = "button" id = "triangleButton">Triangle</button>
+    <button type = "button" id = "circleButton">Circle</button>
+    <button type = "button" id = "diamondButton">Diamond</button> 
+
+    <p>
+    <button type = "button" id = "imageButton">Image</button>
+    </p>
+    <!--Sliders-->
+    <p>
+    Red <input type ="range" min="0" max = "100" value = "100" class = "slider" id="redSlide">
+    <p>
+    Green <input type ="range" min="0" max = "100" value = "0" class = "slider" id="greenSlide">  
+    <p>
+    Blue <input type ="range" min="0" max = "100" value = "0" class = "slider" id="blueSlide">
+
+    <p>
+    Size <input type ="range" min="5" max = "40" value = "0" class = "slider" id="sizeSlide">
+    <p>
+    (Circles)Segment Count <input type ="range" min="10" max = "100" value = "10" class = "slider" id="segSlide">
+    <p>
+    <h1>This is my drawn image:</h1> 
+    <img src="cat.jpg" alt="Cat Image" style="display: block; margin: 20px auto; width: 20%;">
+
+    <h1>Explanation of AWESOME</h1>
+    <p>For my awesome part of the assignment, I decided to create a new paint brush function. I created the diamond shape. Basically, I implemented two triangles to create the shape of a diamond. </p>
+
+    <h1>Features File</h1>
+    <p>Name: Lily Nguyen</p>
+    <p>Email: lnguy113@ucsc.edu</p>
+
+    <h1>Notes to Grader</h1>
+    <p>I spent an unnecessary amount of time on this assignment because I had a super hard time trying to figure out how to get the override to work. I am working on mac so I was super confused because the Professor's example is on windows. But ultimately in the end, I was able to figure it out and I had a fun time completing this assignment.</p>
+    
+
+    <script src="../lib/webgl-utils.js"></script>
+    <script src="../lib/webgl-debug.js"></script>
+    <script src="../lib/cuon-utils.js"></script>
+    <script src="Points.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Circle.js"></script>
+    <script src="Diamond.js"></script>
+    <script src="ColoredPoints.js"></script>
+      
+  </body>
+</html>
