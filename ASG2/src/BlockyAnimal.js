@@ -123,9 +123,6 @@ function connectVariablesToGLSL()
 // Buttons Functions ==========================================
 function addActionsForHtmlUI()
 {
-    // document.getElementById('animate_on').onclick = function() {g_Animation = true;};
-    // document.getElementById('animate_off').onclick = function() {g_Animation = false;};
-    
     // document.getElementById('animationMagentaOnButton').onclick = function() { g_magentaAnimation = true};
     // document.getElementById('animationMagentaOffButton').onclick = function() { g_magentaAnimation = false};
 
@@ -232,7 +229,7 @@ function mouseOrbit()
     {
         if (event.shiftKey) 
         {
-          ALTanimation = !ALTanimation;  // Toggle the attachment state of the hat.
+          ALTanimation = !ALTanimation;  
           renderAllShapes();  
           return; 
         }
