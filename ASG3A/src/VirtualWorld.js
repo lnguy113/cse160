@@ -23,6 +23,7 @@ var FSHADER_SOURCE =`
     uniform sampler2D u_Sampler0;
     uniform sampler2D u_Sampler1;
     uniform sampler2D u_Sampler2;
+    uniform sampler2D u_Sampler3;
     uniform int u_whichTexture;
     void main() 
     {
@@ -56,6 +57,12 @@ var FSHADER_SOURCE =`
         gl_FragColor = texture2D(u_Sampler2, v_UV);
       }
 
+      // use texture 3
+      else if(u_whichTexture == 3)
+      { 
+        gl_FragColor = texture2D(u_Sampler3, v_UV);
+      }
+
       // user default error color 
       else
       { 
@@ -80,9 +87,11 @@ var u_ModelMatrix;
 var u_ViewMatrix;
 var u_GlobalRotateMatrix;
 var u_whichTexture;
-var u_Sampler0; 
+var u_Sampler0; // for cat
 var u_Sampler1; // for ground 
 var u_Sampler2; // for sky 
+var u_Sampler3; // for dog
+
 
 // HTML UI
 let g_selectedColor=[1.0, 1.0, 1.0, 1.0];
@@ -216,6 +225,13 @@ function connectVariablesToGLSL()
     return false;
   }
 
+  u_Sampler3 = gl.getUniformLocation(gl.program, 'u_Sampler3');
+  if(!u_Sampler3)
+  {
+    console.log('Failed to get the storage location of u_Sampler3');
+    return false;
+  }
+
   //set initial value for matrix identity
   var identityM = new Matrix4();
   gl.uniformMatrix4fv(u_ModelMatrix, false, identityM.elements);
@@ -262,6 +278,18 @@ function initTextures(gl, n)
   image2.onload = function(){sendImageToTexture2(image2);}
   // Tell the browser to load an image
   image2.src = 'sky.jpg';
+
+  // for dog
+  var image3 = new Image();  
+  if (!image3) 
+  {
+     console.log('Failed to create the image object');
+     return false;
+  }
+  // Register the event handler to be called on loading an image
+  image3.onload = function(){sendImageToTexture3(image3);}
+  // Tell the browser to load an image
+  image3.src = 'dog.jpg';
 
   // Add more texture loading here // DEBUG:
   return true;
@@ -346,6 +374,32 @@ function sendImageToTexture2(image)
 
   gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, image);
   gl.uniform1i(u_Sampler2, 2);
+  console.log('finished loadTexture');
+}
+
+function sendImageToTexture3(image)
+{
+  var texture = gl.createTexture();
+  if(!texture)
+  {
+    console.log('Failed to create the texture object');
+    return false;
+  }
+
+  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1); // Flips image y axis
+  // Enable texture 0
+
+  gl.activeTexture(gl.TEXTURE3);
+  // Bind texture 0
+
+  gl.bindTexture(gl.TEXTURE_2D, texture);
+  // Set texture parameters
+
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+  // Set the texture image
+
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, image);
+  gl.uniform1i(u_Sampler3, 3);
   console.log('finished loadTexture');
 }
 
@@ -520,16 +574,25 @@ function renderAllShapes()
     var cat = new Cube();
     cat.textureNumber = 0;
     cat.color = [0.0, 0.0, 0.0, 1.0];
-    cat.matrix.translate(-0.2, -0.74, 0.5);
+    cat.matrix.translate(-0.72, -0.74, 0.5);
     cat.matrix.rotate(0, 1, 0, 0);
     cat.matrix.scale(0.5, 0.5, 0.5);
     cat.render();
+
+    // the dog
+    var dog = new Cube();
+    dog.textureNumber = 3;
+    dog.color = [0.0, 0.0, 0.0, 1.0];
+    dog.matrix.translate(0.32, -0.74, 0.5);
+    dog.matrix.rotate(0, 1, 0, 0);
+    dog.matrix.scale(0.5, 0.5, 0.5);
+    dog.render();
 
     // solid color
     var block = new Cube();
     block.textureNumber = -2;
     block.color = [0.76, 0.96, 1.0, 1.0];
-    block.matrix.translate(0.32, -0.74, 0.5);
+    block.matrix.translate(-0.2, -0.74, 0.5);
     block.matrix.rotate(0, 1, 0, 0);
     block.matrix.scale(0.5, 0.5, 0.5);
     block.render();
