@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Virtual World</title>
+  </head>
+
+  <body onload="main()">
+    <!-- Create a canvas -->
+    <canvas id="webgl" width="400" height="400" style="border:1px solid #000000;">
+    Please use a browser that supports "canvas"
+    </canvas>
+    <!-- The NumDot -->
+    <p id="numdot">XXX</p>
+
+    <!--Buttons-->
+    <p>
+    <!-- <button type = "button" id = "animateOn">AnimateON</button>
+    <button type = "button" id = "animateOff">AnimateOFF</button> -->
+
+    <!--Sliders-->
+    <!-- <p>
+    Legs <input type ="range" min="-10" max = "10" value = "100" class = "slider" id="legSlider">
+    <p>
+    Tail <input type ="range" min="-45" max = "45" value = "0" class = "slider" id="tailSlider">  
+    <p> -->
+    <!-- <p>Tail1 <input type="range" min="-10" max="20" value="0" class="slider" id="tailmove1"></p>
+    <p>Tail2 <input type="range" min="-10" max="20" value="0" class="slider" id="tailmove2"></p>
+    <p>Tail3 <input type="range" min="-10" max="20" value="0" class="slider" id="tailmove3"></p> -->
+    
+    Camera Angle <input type="range" min="0" max="360" value="5" class="slider" id="angleSlide">
+    </p>
+
+    <!-- <h1>ASG2: Blocky Animal</h1>
+    <h2>Features File</h2>
+    <p>Name: Lily Nguyen</p>
+    <p>Email: lnguy113@ucsc.edu</p>
+
+    <h2>Notes to Grader</h2>
+    <p>For this assignment, I had a pretty smooth and nice time setting up the project. The tutorial videos helped a lot. When I first started creating my animal, I followed a lot of the steps from the example (the yellow and the magenta) to start building my animal. A couple things that I did struggle on slightly was the orbital and the shift key animation. Nonetheless, I was able figure it out after playing around with the functions and learning more about it. In the end, I had a lot of fun completing this project.</p>
+    <p>As for the shift key animation, I decided to make the cat's tail stright up compared to it's default which is naturally curved. The cat's legs also move back and forth, in sense that they are walking. The tail also moves back and forth. It has three joints that can be toggled with the sliders. </p> -->
+
+    <!-- Functions for WebGL -->
+    <!-- <script src="../lib/webgl-utils.js"></script>
+    <script src="../lib/webgl-debug.js"></script> -->
+    <script src="../lib/cuon-utils.js"></script>
+    <script src="../lib/cuon-matrix.js"></script>
+ 
+    <!-- My js files -->
+    <script src="Triangle.js"></script>
+    <script src="Point.js"></script>
+    <script src="Circle.js"></script>
+    <script src="Cube.js"></script>
+    <script src="TrianglarPrism.js"></script>
+    <script src="VirtualWorld.js"></script>
+      
+  </body>
+</html>
