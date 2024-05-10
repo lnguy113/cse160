@@ -29,6 +29,7 @@ var FSHADER_SOURCE =`
     uniform sampler2D u_Sampler6;
     uniform sampler2D u_Sampler7;
     uniform sampler2D u_Sampler8;
+    uniform sampler2D u_Sampler9;
     uniform int u_whichTexture;
     void main() 
     {
@@ -98,6 +99,12 @@ var FSHADER_SOURCE =`
         gl_FragColor = texture2D(u_Sampler8, v_UV);
       }
 
+      // use texture 9
+      else if(u_whichTexture == 9)
+      { 
+        gl_FragColor = texture2D(u_Sampler9, v_UV);
+      }
+
       // user default error color 
       else
       { 
@@ -131,6 +138,7 @@ var u_Sampler5; // for frog
 var u_Sampler6; // for coffee cup
 var u_Sampler7; // hello kitty (x2)
 var u_Sampler8; // cafe seating walls (wood)
+var u_Sampler9; // the flowerbeds
 var g_Camera = new Camera();
 
 
@@ -299,6 +307,13 @@ function connectVariablesToGLSL()
     console.log('Failed to get the storage location of u_Sampler8');
     return false;
   }
+
+  u_Sampler9 = gl.getUniformLocation(gl.program, 'u_Sampler9');
+  if(!u_Sampler9)
+  {
+    console.log('Failed to get the storage location of u_Sampler9');
+    return false;
+  }
   //set initial value for matrix identity
   var identityM = new Matrix4();
   gl.uniformMatrix4fv(u_ModelMatrix, false, identityM.elements);
@@ -413,6 +428,17 @@ function initTextures(gl, n)
   image8.onload = function(){sendImageToTexture8(image8);}
   // Tell the browser to load an image
   image8.src = '../pictures/wood.jpg';
+
+  var image9 = new Image();
+  if (!image9) 
+  {
+     console.log('Failed to create the image object');
+     return false;
+  }
+  // Register the event handler to be called on loading an image
+  image9.onload = function(){sendImageToTexture9(image9);}
+  // Tell the browser to load an image
+  image9.src = '../pictures/flower.jpg';
 
   // Add more texture loading here // DEBUG:
   return true;
@@ -656,6 +682,32 @@ function sendImageToTexture8(image)
   gl.uniform1i(u_Sampler8, 8);
   console.log('finished loadTexture');
 }
+
+function sendImageToTexture9(image)
+{
+  var texture = gl.createTexture();
+  if(!texture)
+  {
+    console.log('Failed to create the texture object');
+    return false;
+  }
+
+  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1); // Flips image y axis
+  // Enable texture 0
+
+  gl.activeTexture(gl.TEXTURE9);
+  // Bind texture 0
+
+  gl.bindTexture(gl.TEXTURE_2D, texture);
+  // Set texture parameters
+
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+  // Set the texture image
+
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, image);
+  gl.uniform1i(u_Sampler9, 9);
+  console.log('finished loadTexture');
+}
 // Buttons Functions ==========================================
 function addActionsForHtmlUI()
 {
@@ -874,12 +926,12 @@ var g_map =
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,6,6,6,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,6,6,6,0,0,0,0],
+  [0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0,0,0,0],
+  [0,0,0,0,6,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,6,0,0,0,0],
+  [0,0,0,0,6,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,6,0,0,0,0],
+  [0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0,0,0,0],
+  [0,0,0,0,6,6,6,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,6,6,6,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,6,6,6,6,6,6,6,6,0,0,0,0,6,6,6,6,6,6,6,6,0,0,0,0,0,0],
@@ -893,14 +945,14 @@ var g_map =
   [0,0,0,0,0,0,6,0,0,5,0,3,0,0,0,0,0,0,0,0,4,0,2,0,0,6,0,0,0,0,0,0],
   [0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0,0],
   [0,0,0,0,0,0,6,6,6,6,6,6,6,6,0,0,0,0,6,6,6,6,6,6,6,6,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,7,7,7,0,0,0,0,7,7,7,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,6,0,0,0,0,6,0,0,0,0,0,0,0,0,6,0,0,0,0,6,0,0,0,0,0,0],
+  [0,0,0,0,0,0,6,0,5,4,0,6,0,0,0,0,0,0,0,0,6,0,4,2,0,6,0,0,0,0,0,0],
+  [0,0,0,0,0,0,6,0,0,0,0,6,0,0,0,0,0,0,0,0,6,0,0,0,0,6,0,0,0,0,0,0],
+  [0,0,0,0,0,0,6,6,6,6,6,6,0,0,0,0,0,0,0,0,6,6,6,6,6,6,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -967,6 +1019,15 @@ function drawMaps()
             wall.matrix.translate(x - 15.5, -0.8, z - 15.5);
             walls.push(wall);
         }
+
+        // flower beds
+        if (g_map[x][z] == 7) 
+        { 
+            var wall = new Cube();
+            wall.textureNumber = 9; 
+            wall.matrix.translate(x - 15.5, -0.8, z - 15.5);
+            walls.push(wall);
+        }
     }
   }
 }
@@ -980,6 +1041,8 @@ function DroppingCoffeeBlocks(camera)
 
   let x = Math.floor(X + 15.5);
   let z = Math.floor(Z + 15.5);
+
+  // checking to make sure you are still in bound
   if (x >= -10 && x < g_map.length && z >= -15 && z < g_map[x].length) 
   { 
     // Check if position is empty
@@ -1010,6 +1073,8 @@ function RemovingCoffeeBlocks(camera)
 
   let x = Math.floor(X + 15.5);
   let z = Math.floor(Z + 15.5);
+
+  // checking to make sure you are still in bound
   if (x >= -10 && x < g_map.length && z >= -15 && z < g_map[x].length) 
   { 
     // Check if position is empty

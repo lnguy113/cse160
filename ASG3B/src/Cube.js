@@ -1,3 +1,5 @@
+var uvBuffer;
+var vertexBuffer;
 class Cube
 {
     constructor()
@@ -77,6 +79,7 @@ class Cube
         this.UV.left = new Float32Array(v_uv.left);
     }
   
+
     render()
     {
         var rgba = this.color;
@@ -90,6 +93,20 @@ class Cube
 
         // Pass the matrix to u_ModelMatrix attributes
         gl.uniformMatrix4fv(u_ModelMatrix, false, this.matrix.elements);
+        vertexBuffer = gl.createBuffer();
+        if (!vertexBuffer) 
+        {
+            console.log('Failed to create the buffer object for vertices');
+            return -1;
+        }
+
+        //Buffer for UV coordinates
+        uvBuffer = gl.createBuffer();
+        if (!uvBuffer) 
+        {
+            console.log('Failed to create the buffer object for UV');
+            return -1;
+        }
 
         drawTriangle3DUV(this.vertices.front, this.UV.front, this.buffer);
         drawTriangle3DUV(this.vertices.back, this.UV.back, this.buffer);

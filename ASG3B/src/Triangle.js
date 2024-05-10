@@ -60,12 +60,12 @@ function drawTriangle3DUV(vertices, uv)
         var n = vertices.length / 3; 
   
         // Buffer for vertices
-        var vertexBuffer = gl.createBuffer();
-        if (!vertexBuffer) 
-        {
-            console.log('Failed to create the buffer object for vertices');
-            return -1;
-        }
+        // var vertexBuffer = gl.createBuffer();
+        // if (!vertexBuffer) 
+        // {
+        //     console.log('Failed to create the buffer object for vertices');
+        //     return -1;
+        // }
 
         // Bind the buffer object to target
         gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
@@ -80,12 +80,12 @@ function drawTriangle3DUV(vertices, uv)
         gl.enableVertexAttribArray(a_Position);
         
         // Buffer for UV coordinates
-        var uvBuffer = gl.createBuffer();
-        if (!uvBuffer) 
-        {
-            console.log('Failed to create the buffer object for UV');
-            return -1;
-        }
+        // var uvBuffer = gl.createBuffer();
+        // if (!uvBuffer) 
+        // {
+        //     console.log('Failed to create the buffer object for UV');
+        //     return -1;
+        // }
 
         // Bind the buffer object to target
         gl.bindBuffer(gl.ARRAY_BUFFER, uvBuffer);
@@ -101,4 +101,3 @@ function drawTriangle3DUV(vertices, uv)
     
         gl.drawArrays(gl.TRIANGLES, 0, n);
     }
-

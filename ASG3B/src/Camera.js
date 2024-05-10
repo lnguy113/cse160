@@ -82,8 +82,6 @@ class Camera
         this.at.set(nextAt);
         this.eye.set(nextEye);
     }
-
-  
     
     right() 
     {
@@ -170,31 +168,6 @@ class Camera
 function clamp(value, min, max) 
 {
     return Math.max(min, Math.min(max, value));
-}
-
-// Adding and Deleting Blocks 
-function CameraPosition(camera) 
-{
-    let F = camera.Fdirection();
-    let x = camera.eye.elements[0] + F.elements[0];
-    let z = camera.eye.elements[2] + F.elements[2];
-
-    // keep track of numbers 
-    let X = Math.floor(x + 15.5);
-    let Z = Math.floor(z + 15.5);
-
-    if (X >= 0 && X < g_map.length && Z >= 0 && Z < g_map[X].length) 
-    {
-        if (g_map[X][Z] === 0) 
-        { 
-            g_map[X][Z] = 3;
-            let block = new Cube();
-            block.textureNum = 7; 
-            block.translate(X - 15.5, 0.01, Z - 15.5);
-            allies.push(block);
-            renderAllScene();
-        }
-    }
 }
 
 function mouseOrbit() 
