@@ -1,0 +1,14 @@
+/* CSS code to style JavaScript output */
+.pretty-js {
+    background-color: pink;
+    padding: 20px;
+}
+
+.pretty-js h1 {
+    color: white;
+    text-align: center;
+}
+
+.pretty-js p {
+    color: black;
+}

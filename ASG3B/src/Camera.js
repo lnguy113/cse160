@@ -157,7 +157,7 @@ class Camera
         this.at.elements[1]-=2;
     }
 
-    Fdirection() 
+    direction() 
     {
         let forward = new Vector3();
         forward.set(this.at);

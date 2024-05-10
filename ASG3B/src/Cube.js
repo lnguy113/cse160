@@ -9,6 +9,8 @@ class Cube
         this.vertices = { front: null, back: null, top: null, bot: null, right: null, left: null };
         this.UV = { front: null, back: null, top: null, bot: null, right: null, left: null };
         this.textureNumber = -2;
+        this.x = null;
+        this.z = null;
     }
 
     generateVertices() 
