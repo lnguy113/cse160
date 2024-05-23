@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Virtual World</title>
+    <!-- <link rel="stylesheet" type="text/css" href="background.css"> -->
+
+    <!-- <style>
+    body 
+    {
+    background-color: rgb(250, 226, 230);
+    font-family: 'Georgia';
+    }
+  
+    /* Center the content */
+    .container 
+    {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  
+    /* Style the heading */
+    h1 
+    {
+      color: #000;
+      font-family: cursive;
+      font-size:xx-large;
+      text-align-last: center;
+    }
+    h2
+    {
+      color: #e522b8;
+      font-size:x-large;
+      text-align-last: center;
+    }
+
+    
+    /* Style the canvas */
+    canvas 
+    {
+      border: 1px solid #000;
+    }
+    
+    /* Style the paragraph */
+    p 
+    {
+      color: #474747;
+      font-size: large;
+    }
+    </style> -->
+  </head>
+  <body onload="main()">
+    <!-- <h1>Sanrio Café!</h1> -->
+    
+    <!-- Create a canvas -->
+    <canvas id="webgl" width="500" height="500" style="border:1px solid #000000;">
+    Please use a browser that supports "canvas"
+    </canvas>
+    <!-- The NumDot -->
+    <p id="numdot">XXX</p>
+
+    <!-- Button code-->
+    <p>
+      <button type="button" id="normalOn">NormalOn</button>
+      <button type="button" id="normalOff">NormalOff</button>
+      <button type="button" id="visualizeOn">VisualizeOn</button>
+      <button type="button" id="visualizeOff">VisualizeOff</button>
+      <button type="button" id="spotlightOn">spotlightOn</button>
+      <button type="button" id="spotlightOff">spotlightOff</button>
+    </p>
+    <p>
+      <button type="button" id="lightOn">Light On</button>
+      <button type="button" id="lightOff">Light Off</button>
+      <button type="button" id="sliderControlOn">sliderOn</button>
+      <button type="button" id="sliderControlOff">sliderOff</button>
+    </p>
+    <p></p>
+    Animation:
+    <button type="button" id="animateOn">ON</button>
+    <button type="button" id="animateOff">OFF</button> 
+    <p>
+      Light X<input type="range" min="-250" max="250" value="0" class="slider" id="lightSlideX">
+    </p>
+    <p>
+      Light Y<input type="range" min="-250" max="250" value="100" class="slider" id="lightSlideY"> 
+    </p>
+    <p>
+      Light Z<input type="range" min="-250" max="250" value="-200" class="slider" id="lightSlideZ"> 
+    </p>  
+
+    <!-- Sliders code-->
+    <label for="lightColorR">Red:</label>
+    <input type="range" id="lightColorR" name="lightColorR" min="0" max="1" step="0.01" value="1"><br>
+    <label for="lightColorG">Green:</label>
+    <input type="range" id="lightColorG" name="lightColorG" min="0" max="1" step="0.01" value="1"><br>
+    <label for="lightColorB">Blue:</label>
+    <input type="range" id="lightColorB" name="lightColorB" min="0" max="1" step="0.01" value="1"><br>
+    <p>Camera <input type="range" min="-180" max="180" value="0" class="slider" id="cameraAngle"></p>
+    <p>Magenta <input type="range" min="-45" max="45" value="0" class="slider" id="magentaSlide">  
+    <button type="button" id="animationMagentaOnButton">AnimationON</button>
+    <button type="button" id="animationMagentaOffButton">AnimationOFF</button>
+  </p>
+    <p></p>
+    <p>Yellow <input type="range" min="-45" max="45" value="0" class="slider" id="yellowSlide">
+    <button type="button" id="animationYellowOnButton">AnimationON</button>
+    <button type="button" id="animationYellowOffButton">AnimationOFF</button>
+  </p>
+    <h2>Features File</h2>
+    <p>Name: Lily Nguyen</p>
+    <p>Email: lnguy113@ucsc.edu</p>
+
+    <h2>Notes to Grader</h2>
+    <p>For this assignment, there were many parts that I struggled with. I learned about the different functions and options for lighting. I think the most difficult part about this assingment was getting the concepts to work. The one concept that I struggled the most on was the spotlight portion. The other aspect were pretty easy going because I was able to follow the professor's tutorial vidoes.</p>
+    <p>Another thing about this project that was slightly challenging was the fact that my computer kept crashing. The fps was super low and it was hard for me to get everything to work without constantly lagging.</p>
+    <p>In the end, I learned a lot about different lighting and I had a fun time doing this assignment.</p> 
+
+
+    <!-- Functions for WebGL -->
+    <!-- <script src="../lib/webgl-utils.js"></script>
+    <script src="../lib/webgl-debug.js"></script> -->
+    <script src="../lib/cuon-utils.js"></script>
+    <script src="../lib/cuon-matrix.js"></script>
+ 
+    <!-- My js files -->
+    <script src="Camera.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Points.js"></script>
+    <script src="Circle.js"></script>
+    <script src="Cube.js"></script>
+    <script src="Sphere.js"></script>
+    <script src="TrianglarPrism.js"></script>
+    <script src="VirtualWorld.js"></script>
+    
+      
+  </body>
+</html>
