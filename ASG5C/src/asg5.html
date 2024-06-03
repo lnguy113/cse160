@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 5A</title>
+
+    <style>
+        body 
+        {
+            background-color: rgb(250, 226, 230);
+            font-family: 'Georgia';
+        }
+      
+        /* Center the content */
+        .container 
+        {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: row;
+            margin-top: 20px;
+        }
+      
+        /* Style the heading */
+        h1 
+        {
+            color: #000;
+            font-family: cursive;
+            font-size: xx-large;
+            text-align: center;
+        }
+        h2 
+        {
+            color: #e522b8;
+            font-size: x-large;
+            text-align: center;
+        }
+    
+        /* Style the canvas */
+        canvas
+        {
+            border: 1px solid #000;
+            margin-left: 200px;
+            align-items: center;
+        }
+        
+        /* Style the paragraph */
+        p 
+        {
+            color: #474747;
+            font-size: large;
+        }
+        
+        /* Style the content section */
+        .content 
+        {
+            max-width: 600px;
+        }
+    </style>
+    <script type="importmap">
+        {
+            "import": 
+            {
+                "three": "../lib/three.js-master/build/three.module.js",
+                "three/addons/": "../lib/three.js-master/examples/jsm"
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Sky Cafe!</h1>
+    <div class="container">
+        <canvas id="c" width="1000" height=1000"></canvas>
+        <div class="content">
+            <h2>Welcome to my Sanrio Sky Cafe >.<</h2>
+            <p>
+                Our Story: In the heart of the whimsical town of Kittyville, nestled high among the fluffy, pastel-colored clouds, was the magical Sky Café. This café was not like any other; it was owned by the beloved Sanrio characters, who all worked together to create a dreamy paradise for their friends and visitors.
+            </p>
+            <p> 
+                Perched on a floating island of fluffy clouds, the Sky Café is a cozy haven designed to bring joy to everyone who visits. The café itself is a quaint building with large windows that offer breathtaking views of the sky. The interior is decorated with pastel hues, twinkling fairy lights, and plush, comfy seating. Tables are adorned with fresh flowers, and the air is always filled with the sweet scent of baked goods and fresh coffee.
+            </p>
+            
+            <h2>Our Menu</h2>
+            <p>The Sky Café offers a delightful array of beverages and pastries, all crafted with a touch of magic:</p>
+            <p><strong>Cloud Lattes:</strong> These are light, frothy drinks topped with whimsical designs and a sprinkle of star dust, crafted by Cinnamoroll. </p>
+            <p><strong>Rainbow Frappés:</strong> Vibrant, colorful drinks that are as delightful to look at as they are to taste. Each sip is a burst of fruity flavors. </p>
+            <p><strong>Strawberry Shortcake:</strong> My Melody signature dessert, made with layers of fluffy sponge cake, fresh strawberries, and whipped cream. </p>
+            <p><strong>Star-shaped Cookies:</strong> Deliciously buttery cookies with a hint of vanilla, baked to perfection by My Melody and often decorated with sparkling sugar by Twinkle. </p>
+            <p><strong>Magic Macarons:</strong> Delicate, colorful macarons filled with a variety of flavors, from classic vanilla to exotic lavender, with a touch of fairy magic. </p>
+
+            <h2>Our Special Events</h2>
+            <p>Our events are hosted by different Characters. Each event is hosted once per week!</p>
+            <p><strong>Star-Gazing Nights:</strong> Guests are invited to stay late and enjoy the breathtaking view of the night sky. Twinkle often leads these events, sharing stories about the stars and constellations.</p>
+            <p><strong>Cloud Painting Sessions:</strong> A creative event where visitors can paint and decorate their own cloud-shaped cookies or canvases, guided by the artistic My Melody.</p>
+            <p><strong>Magical Tea Parties:</strong> Hosted by Hello Kitty, these parties are perfect for making new friends and enjoying a selection of special teas and pastries.</p>
+            
+            <h2>Meet the Characters</h2>
+            <p><strong>Hello Kitty:</strong> With her signature bow and bright-eyed charm, Hello Kitty is the epitome of sweetness and innocence. Always ready with a warm smile and always waving at friends, making everyone feel welcome and loved. </p>
+            <p><strong>Melody:</strong> My Melody is a gentle and caring soul, known for her soft pink hood and sweet demeanor. With her kind heart and nurturing nature, she is the friend everyone turns to in times of need, offering comfort and support with her soothing presence. </p>
+            <p><strong>Chococat:</strong> Chococat is a curious and clever character, easily recognized by his sleek black fur and chocolate-colored nose. Sporting his signature blue collar, he has a knack for uncovering hidden details and solving mysteries. Despite his quiet demeanor, Chococat's playful intelligence and quick thinking make him a delightful companion.</p>
+            <p><strong>Tuxedo Sam:</strong> Tuxedo Sam is a charming and well-dressed penguin known for his impeccable manners and stylish outfits. He ensures every guest is seated comfortably and attended to with the utmost care. With his cheerful personality and sharp tuxedo, Tuxedo Sam adds a touch of elegance to the Sky Café. </p>
+
+            <h2>Notes to Grader</h2>
+            <p>For this assignment, I just added different obj files to complete my character collection. I also added a story line along with the "meet the characters" and "the menu" features. Throughout this assignment, I was mainly playing around with the html and the css work to make my assignment presentable. I also added a fog feature for when you scroll out futher away from the canvas. 
+             </p>
+        </div>
+    </div>
+    <script src="asg5.js" type="module"></script>
+</body>
+</html>
